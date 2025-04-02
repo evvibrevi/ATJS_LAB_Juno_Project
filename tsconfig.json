@@ -1,19 +1,19 @@
 {
-    "compilerOptions": {
-      "target": "ES2022",
-      "module": "commonjs",
-      "outDir": "./out",
-      "rootDir": "./",
-      "strict": true,
-      "skipLibCheck": true,
-      "esModuleInterop": true,
-      "moduleResolution": "node",
-      "types": ["node", "@playwright/test"]
-    },
-    "paths": {
-      "@tests/*": ["./tests/*"],
-      "@utils/*": ["./utils/*"]
-    },
-    "include": ["**/*.ts"],
-    "exclude": ["node_modules"]
-  }
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "outDir": "./out",
+    "rootDir": "./",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "types": ["node", "@playwright/test"]
+  },
+  "paths": {
+    "@tests/*": ["./tests/*"],
+    "@utils/*": ["./utils/*"]
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}

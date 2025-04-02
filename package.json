@@ -3,12 +3,18 @@
   "version": "1.0.0",
   "description": "Website Testing Training Project",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.51.1",
-    "@types/node": "^22.13.15"
+    "eslint": "^9.23.0",
+    "eslint-plugin-playwright": "^2.2.0",
+    "typescript-eslint": "^8.29.0"
   }
 }
+
