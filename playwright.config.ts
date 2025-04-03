@@ -1,4 +1,4 @@
-import 'dotenv/config';
+//import 'dotenv/config';
 import { defineConfig, devices } from '@playwright/test';
 
 console.log('SONAR_TOKEN:', process.env.SONAR_TOKEN);
@@ -31,11 +31,21 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
+    // Enable video recording
+    video: 'on', // Options: 'on', 'off', 'retain-on-failure', 'on-first-retry'
+    // Optional: Specify video size
+    viewport: { width: 1280, height: 720 },
+    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
 
+    // Adds 500ms delay between operations
+    launchOptions: {
+      slowMo: 500,
+    },
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
-
+  // Optional: Define where videos are saved
+  outputDir: './test-results/video', // Directory for videos and other test outputs
   /* Configure projects for major browsers */
   projects: [
     {
@@ -43,15 +53,15 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
