@@ -1,6 +1,7 @@
-projectKey=atjs_lab_juno_project
-serverUrl=http://localhost:9000
-serverVersion=25.3.0.104237
-dashboardUrl=http://localhost:9000/dashboard?id=atjs_lab_juno_project
-ceTaskId=bd485321-84e2-484a-869e-7ec519b9e8f8
-ceTaskUrl=http://localhost:9000/api/ce/task?id=bd485321-84e2-484a-869e-7ec519b9e8f8
+organization=evvibrevi
+projectKey=evvibrevi_ATJS_LAB_Juno_Project
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.61474
+dashboardUrl=https://sonarcloud.io/dashboard?id=evvibrevi_ATJS_LAB_Juno_Project
+ceTaskId=AZX8369-iQqE5HYs-3Ah
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZX8369-iQqE5HYs-3Ah
