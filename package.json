@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "sonar": "node -r dotenv/config ./node_modules/.bin/sonar-scanner"
   },
   "keywords": [],
   "author": "",
@@ -14,8 +15,10 @@
   "devDependencies": {
     "@playwright/test": "^1.51.1",
     "@types/node": "^22.13.15",
+    "dotenv": "^16.4.7",
     "eslint": "^9.23.0",
     "eslint-plugin-playwright": "^2.2.0",
+    "sonarqube-scanner": "^4.3.0",
     "typescript-eslint": "^8.29.0"
   }
 }
