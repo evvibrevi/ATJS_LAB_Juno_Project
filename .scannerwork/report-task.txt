@@ -1,7 +1,0 @@
-organization=evvibrevi
-projectKey=evvibrevi_ATJS_LAB_Juno_Project
-serverUrl=https://sonarcloud.io
-serverVersion=8.0.0.61474
-dashboardUrl=https://sonarcloud.io/dashboard?id=evvibrevi_ATJS_LAB_Juno_Project
-ceTaskId=AZX8369-iQqE5HYs-3Ah
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZX8369-iQqE5HYs-3Ah
