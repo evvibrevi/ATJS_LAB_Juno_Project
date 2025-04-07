@@ -23,3 +23,16 @@ Available configuration options:
 2.Adjust video resolution with the 'viewport' option.
 3.Set a delay between testing operations to make the video clearer using the 'slowMo' parameter in the 'launchOptions' block.
 4.Specify the destination directory for saved videos using the 'outputDir' option.
+
+###  SonarQube Usage
+
+SonarQube is used to analyze the project's TypeScript code for quality issues, code smells, and security vulnerabilities. 
+The scanner runs automatically in GitHub Actions and can also be executed locally.
+
+Run SonarQube analysis locally:
+
+- - **`npx sonarqube-scanner`**: This command scans the project and sends results to SonarQube.
+
+SonarQube automatically runs as part of the CI/CD pipeline when a push or pull request is made to the main or master branch.
+
+The scanner sends results to the SonarCloud server defined by: https://sonarcloud.io/project/overview?id=evvibrevi_ATJS_LAB_Juno_Project
