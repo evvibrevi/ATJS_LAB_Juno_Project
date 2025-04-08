@@ -3,5 +3,5 @@ projectKey=evvibrevi_ATJS_LAB_Juno_Project
 serverUrl=https://sonarcloud.io
 serverVersion=8.0.0.61596
 dashboardUrl=https://sonarcloud.io/dashboard?id=evvibrevi_ATJS_LAB_Juno_Project
-ceTaskId=AZYRkyxIHzyGBqFgMRwp
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZYRkyxIHzyGBqFgMRwp
+ceTaskId=AZYUfRMYHzyGBqFgMhe1
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZYUfRMYHzyGBqFgMhe1

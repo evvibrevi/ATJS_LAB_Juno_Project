@@ -1,9 +1,6 @@
 //import 'dotenv/config';
 import { defineConfig, devices } from '@playwright/test';
 
-console.log('SONAR_TOKEN:', process.env.SONAR_TOKEN);
-console.log('SONAR_HOST_URL:', process.env.SONAR_HOST_URL);
-
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
