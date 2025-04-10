@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { StudioEquipmentPage } from '../../pages/studioEquipment.page';
 import { isArraySortedAscending } from '../../helpers/array-utils';
-import { ProductListingPage } from '../../pages/productListingPage';
+import { ProductListingPage } from '../../pages/productListing.page';
 
 test('Sorting by price', async ({ page }) => {
   const studioPage: StudioEquipmentPage = new StudioEquipmentPage(page);

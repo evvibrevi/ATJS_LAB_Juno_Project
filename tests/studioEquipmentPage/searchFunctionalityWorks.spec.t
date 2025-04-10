@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { StudioEquipmentPage } from '../../pages/studioEquipment.page';
-import { ProductListingPage } from '../../pages/productListingPage';
+import { ProductListingPage } from '../../pages/productListing.page';
 
 test('Product details page opens', async ({ page }) => {
   const studioPage: StudioEquipmentPage = new StudioEquipmentPage(page);
