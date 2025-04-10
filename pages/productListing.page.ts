@@ -1,7 +1,7 @@
 import { BasePage } from './base.page';
 import { Page } from '@playwright/test';
-import { ProductFilterSidebar } from './components/common/productFilterSidebar.component';
-import { ProductSortingFilter } from './components/common/productSortingFilter.component';
+import { ProductFilterSidebar } from './components/productLisitingPage/productFilterSidebar.component';
+import { ProductSortingFilter } from './components/productLisitingPage/productSortingFilter.component';
 
 export class ProductListingPage extends BasePage {
   productFilterSidebar: ProductFilterSidebar;

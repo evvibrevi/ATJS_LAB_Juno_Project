@@ -1,4 +1,4 @@
-import { BaseComponent } from './base.component';
+import { BaseComponent } from '../common/base.component';
 
 export class ProductFilterSidebar extends BaseComponent {
   async filterByBrand(name: string): Promise<void> {
