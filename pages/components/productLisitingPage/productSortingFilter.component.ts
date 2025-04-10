@@ -1,4 +1,4 @@
-import { BaseComponent } from './base.component';
+import { BaseComponent } from '../common/base.component';
 import { Locator } from '@playwright/test';
 
 export class ProductSortingFilter extends BaseComponent {
