@@ -16,8 +16,6 @@ console.log('SONAR_HOST_URL:', process.env.SONAR_HOST_URL);
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  
-
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -30,20 +28,24 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['html', { outputFolder: 'playwright-report' }], // html
-    ['@reportportal/agent-js-playwright', {
-       token: 'JunoTest_g7XAEQnpR4yesrtEXCSbfgS-sAK9cwscjiKvwcP7Q_yFxtATjhc8LcYWkTZqpRP2',
-      endpoint: 'https://reportportal.epam.com/api/v1',
-      project: 'ruslan_klimakov_personal', 
-      launch: 'Playwright UI tests',
-      description: 'Juno test',
-      attributes: [{ key: 'team', value: 'QA' }],
-      debug: false,
-    }]
+    [
+      '@reportportal/agent-js-playwright',
+      {
+        token:
+          'JunoTest_g7XAEQnpR4yesrtEXCSbfgS-sAK9cwscjiKvwcP7Q_yFxtATjhc8LcYWkTZqpRP2',
+        endpoint: 'https://reportportal.epam.com/api/v1',
+        project: 'ruslan_klimakov_personal',
+        launch: 'Playwright UI tests',
+        description: 'Juno test',
+        attributes: [{ key: 'team', value: 'QA' }],
+        debug: false,
+      },
+    ],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+    baseURL: 'https://www.juno.co.uk',
     // Enable video recording
     video: 'on', // Options: 'on', 'off', 'retain-on-failure', 'on-first-retry'
     // Optional: Specify video size
