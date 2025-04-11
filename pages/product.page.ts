@@ -1,7 +1,15 @@
-import { Locator } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import { BasePage } from './base.page';
+import { CartPopup } from './popups/cart.popup';
 
 export class ProductPage extends BasePage {
+  cartPopup: CartPopup;
+
+  constructor(page: Page) {
+    super(page);
+    this.cartPopup = new CartPopup(page);
+  }
+
   async getProductName(): Promise<string | null> {
     return await this.page
       .locator('.product-title-eq.d-none.d-lg-block h1 span')
