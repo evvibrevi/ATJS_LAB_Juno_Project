@@ -19,9 +19,6 @@ export class Header extends BaseComponent {
   }
 
   get currencyPicker(): Locator {
-    return this.page
-      .locator('div')
-      .filter({ hasText: /^GBP$/ })
-      .getByRole('img');
+    return this.page.locator('div.ht-btn.touch-btn[aria-haspopup="true"]');
   }
 }
