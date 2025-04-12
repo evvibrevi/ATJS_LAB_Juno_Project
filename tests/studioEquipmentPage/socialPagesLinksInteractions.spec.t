@@ -7,9 +7,7 @@ test('Social pages links interactions', async ({ page }) => {
   await studioPage.open();
   const pagePromise = page.context().waitForEvent('page');
 
-  if (await studioPage.footer.socialInstagramButton.isVisible()) {
-    await studioPage.footer.socialInstagramButton.click();
-  }
+  await studioPage.footer.socialInstagramButton.click();
 
   const newPage = await pagePromise;
   await newPage.waitForLoadState();

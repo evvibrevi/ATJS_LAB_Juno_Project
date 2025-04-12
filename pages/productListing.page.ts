@@ -4,8 +4,8 @@ import { ProductFilterSidebar } from './components/productLisitingPage/productFi
 import { ProductSortingFilter } from './components/productLisitingPage/productSortingFilter.component';
 
 export class ProductListingPage extends BasePage {
-  productFilterSidebar: ProductFilterSidebar;
-  productSortingFilter: ProductSortingFilter;
+  readonly productFilterSidebar: ProductFilterSidebar;
+  readonly productSortingFilter: ProductSortingFilter;
 
   constructor(page: Page) {
     super(page);

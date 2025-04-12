@@ -3,7 +3,7 @@ import { BaseComponent } from '../base.component';
 import { SearchBar } from './searchBar.component';
 
 export class Header extends BaseComponent {
-  searchBar: SearchBar;
+  readonly searchBar: SearchBar;
 
   constructor(page: Page) {
     super(page);
