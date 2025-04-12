@@ -13,11 +13,10 @@ test('Filter by brand', async ({ page }) => {
   await productListingPage.productFilterSidebar.filterByBrand(brand);
 
   const numberOfProductsOnPage = await productListingPage.countProductsOnPage();
-
   const numberOfProductsOnPageFitlteredByBrand =
     await productListingPage.countProductsWithSelectedBrand(brand);
 
-  expect(numberOfProductsOnPage).toEqual(
-    numberOfProductsOnPageFitlteredByBrand
+  expect(numberOfProductsOnPageFitlteredByBrand).toEqual(
+    numberOfProductsOnPage
   );
 });

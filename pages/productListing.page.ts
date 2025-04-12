@@ -18,20 +18,16 @@ export class ProductListingPage extends BasePage {
   }
 
   async countProductsWithSearchKeyword(searchWord: string): Promise<number> {
-    const foundWord: string = searchWord[0].toUpperCase + searchWord.slice(1);
-
     return await this.page
       .locator('.text-md .highlight.highlight-1')
-      .filter({ hasText: foundWord })
+      .filter({ hasText: searchWord })
       .count();
   }
 
   async countProductsWithSelectedBrand(brandName: string): Promise<number> {
-    const foundWord: string = brandName.toUpperCase();
-
     return await this.page
-      .locator('.text-md .text-light')
-      .filter({ hasText: foundWord })
+      .locator('.text-md.text-light')
+      .filter({ hasText: brandName })
       .count();
   }
 
