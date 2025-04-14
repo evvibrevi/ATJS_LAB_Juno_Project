@@ -11,7 +11,7 @@ test('Sorting by price', async ({ page }) => {
   await studioPage.openNewStudioEquipmentSecton();
 
   await productListingPage.productSortingFilter.sortByPrice('Low to high');
-  await page.waitForTimeout(3000);
+
   const AllPricesOnPage = await productListingPage.findAllPrices();
 
   expect(isArraySortedAscending(AllPricesOnPage)).toBeTruthy();
