@@ -1,5 +1,5 @@
 import { BasePage } from './base.page';
-import { Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import { ProductFilterSidebar } from './components/productLisitingPage/productFilterSidebar.component';
 import { ProductSortingFilter } from './components/productLisitingPage/productSortingFilter.component';
 
@@ -32,14 +32,14 @@ export class ProductListingPage extends BasePage {
   }
 
   async findAllPrices(): Promise<number[]> {
-    const priceElements = this.page.locator('.price_lrg');
+    const priceElements: Locator = this.page.locator('.price_lrg');
 
-    const count = await priceElements.count();
+    const count: number = await priceElements.count();
 
     const prices: number[] = [];
 
     for (let i = 0; i < count; i++) {
-      let priceText = await priceElements.nth(i).textContent();
+      let priceText: string | null = await priceElements.nth(i).textContent();
       if (priceText) {
         if (priceText.includes(',')) {
           priceText = priceText.replace(',', '');
