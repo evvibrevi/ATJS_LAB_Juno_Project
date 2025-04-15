@@ -10,7 +10,7 @@ test('Product Details Visible', async ({ page }) => {
     const searchTerm = 'CME 25DIN6mini TRS 2.5mm To DIN6mini Cable (10cm)';
     const itemClass = 'img-fluid'; // class name
     await homePage.open();
-    await homePage.header.searchBar.search(searchTerm);
+    await homePage.header.searchBar.search_alternative(searchTerm);
     // click on the first element with class 'img-fluid'
     await searchBar.clickFoundItem(itemClass);
     const productPage = new ProductPage(page);
@@ -21,5 +21,4 @@ test('Product Details Visible', async ({ page }) => {
     await expect(productPage.featuresTab).toHaveText('Features');
     await expect(productPage.cartButton).toBeVisible();
     await expect(productPage.reviews).toBeVisible();
-    await page.waitForTimeout(3000);
 });

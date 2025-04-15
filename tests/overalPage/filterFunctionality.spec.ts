@@ -6,6 +6,8 @@ import { isArraySortedAscending } from '../../helpers/array-utils';
 test('Product listing filters work correctly', async ({ page }) => {
     const listingPage = new ProductListingPage(page);
     await page.goto('all/eight-weeks/');
+    await listingPage.productSortingFilter.sortByPrice('High to low');
+    await page.waitForTimeout(1000)
 // prices filter check
     const initialPrices = await listingPage.findAllPrices();
     console.log('Prices before sorting:', initialPrices);

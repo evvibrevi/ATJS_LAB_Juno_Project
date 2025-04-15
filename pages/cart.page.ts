@@ -44,7 +44,7 @@ export class CartPage extends BasePage {
   }
 
   async waitForCartUpdate(): Promise<void> {
-    await this.page.waitForTimeout(5000); // Даем время на обновление
+    await this.page.waitForTimeout(3000); // Даем время на обновление
   }
 
   async getQuantity(): Promise<number> {

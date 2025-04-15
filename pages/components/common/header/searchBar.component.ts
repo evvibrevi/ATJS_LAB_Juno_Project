@@ -22,6 +22,12 @@ export class SearchBar extends BaseComponent {
     await this.searchButton.click();
     await this.page.waitForURL(/search/);
   }
+  
+  async search_alternative(searchWord: string, filtername: FilterName = 'All') {
+    this.searchFilter(filtername);
+    await this.searchInputField.fill(searchWord);
+    await this.searchButton.click();
+  }
 
 foundItem(selector: string): Locator {
   const cssSelector = selector.startsWith('.') ? selector : `.${selector}`;

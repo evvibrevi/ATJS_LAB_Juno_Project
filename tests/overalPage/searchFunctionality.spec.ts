@@ -8,7 +8,7 @@ test('Validate Search Functionality', async ({ page }) => {
   const searchTerm: string = 'Alabama Shakes';
 
   await homePage.open();
-  await homePage.header.searchBar.search(searchTerm);
+  await homePage.header.searchBar.search_alternative(searchTerm);
 
   const numberOfProductsOnPage = await productListingPage.countProductsOnPage();
   const numberOfSearchedProductsOnPage =
