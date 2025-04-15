@@ -19,8 +19,10 @@ export class ProductSortingFilter extends BaseComponent {
 
     if (method === 'Low to high') {
       await this.LowToHighOption.click();
+      await this.page.waitForURL(/price_up/);
     } else {
       await this.HighToLowOption.click();
+      await this.page.waitForURL(/price_down/);
     }
   }
 }

@@ -16,8 +16,10 @@ export class SearchBar extends BaseComponent {
   }
 
   async search(searchWord: string, filtername: FilterName = 'All') {
-    this.searchFilter(filtername);
+    await this.searchFilter('All').click();
+    await this.searchFilter(filtername).click();
     await this.searchInputField.fill(searchWord);
     await this.searchButton.click();
+    await this.page.waitForURL(/search/);
   }
 }

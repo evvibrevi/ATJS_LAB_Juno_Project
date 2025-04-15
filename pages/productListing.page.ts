@@ -1,11 +1,11 @@
 import { BasePage } from './base.page';
-import { Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import { ProductFilterSidebar } from './components/productLisitingPage/productFilterSidebar.component';
 import { ProductSortingFilter } from './components/productLisitingPage/productSortingFilter.component';
 
 export class ProductListingPage extends BasePage {
-  productFilterSidebar: ProductFilterSidebar;
-  productSortingFilter: ProductSortingFilter;
+  readonly productFilterSidebar: ProductFilterSidebar;
+  readonly productSortingFilter: ProductSortingFilter;
 
   constructor(page: Page) {
     super(page);
@@ -18,32 +18,28 @@ export class ProductListingPage extends BasePage {
   }
 
   async countProductsWithSearchKeyword(searchWord: string): Promise<number> {
-    const foundWord: string = searchWord[0].toUpperCase + searchWord.slice(1);
-
     return await this.page
       .locator('.text-md .highlight.highlight-1')
-      .filter({ hasText: foundWord })
+      .filter({ hasText: searchWord })
       .count();
   }
 
   async countProductsWithSelectedBrand(brandName: string): Promise<number> {
-    const foundWord: string = brandName.toUpperCase();
-
     return await this.page
-      .locator('.text-md .text-light')
-      .filter({ hasText: foundWord })
+      .locator('.text-md.text-light')
+      .filter({ hasText: brandName })
       .count();
   }
 
   async findAllPrices(): Promise<number[]> {
-    const priceElements = this.page.locator('.price_lrg');
+    const priceElements: Locator = this.page.locator('.price_lrg');
 
-    const count = await priceElements.count();
+    const count: number = await priceElements.count();
 
     const prices: number[] = [];
 
     for (let i = 0; i < count; i++) {
-      let priceText = await priceElements.nth(i).textContent();
+      let priceText: string | null = await priceElements.nth(i).textContent();
       if (priceText) {
         if (priceText.includes(',')) {
           priceText = priceText.replace(',', '');

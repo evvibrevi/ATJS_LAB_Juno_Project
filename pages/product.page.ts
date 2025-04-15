@@ -3,7 +3,7 @@ import { BasePage } from './base.page';
 import { CartPopup } from './popups/cart.popup';
 
 export class ProductPage extends BasePage {
-  cartPopup: CartPopup;
+  readonly cartPopup: CartPopup;
 
   constructor(page: Page) {
     super(page);

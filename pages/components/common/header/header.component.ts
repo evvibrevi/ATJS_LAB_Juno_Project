@@ -3,7 +3,7 @@ import { BaseComponent } from '../base.component';
 import { SearchBar } from './searchBar.component';
 
 export class Header extends BaseComponent {
-  searchBar: SearchBar;
+  readonly searchBar: SearchBar;
 
   constructor(page: Page) {
     super(page);
@@ -20,5 +20,11 @@ export class Header extends BaseComponent {
 
   get currencyPicker(): Locator {
     return this.page.locator('div.ht-btn.touch-btn[aria-haspopup="true"]');
+  }
+
+  get studioEquipmentBreadCrumb(): Locator {
+    return this.page
+      .locator('#studio')
+      .getByRole('link', { name: 'Studio equipment', exact: true });
   }
 }
