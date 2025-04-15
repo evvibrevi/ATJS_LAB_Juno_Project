@@ -30,6 +30,10 @@ export class ProductListingPage extends BasePage {
       .filter({ hasText: brandName })
       .count();
   }
+  async countProductsWithSelectedBrandAlternative(brandName: string): Promise<number> {
+    // more concrete structure <a class="text-md text-light">CME</a>
+    return await this.page.locator(`a.text-md.text-light:has-text("${brandName.toUpperCase()}")`).count();
+  }
 
   async findAllPrices(): Promise<number[]> {
     const priceElements: Locator = this.page.locator('.price_lrg');

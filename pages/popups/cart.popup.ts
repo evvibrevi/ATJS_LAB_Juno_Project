@@ -9,4 +9,12 @@ export class CartPopup extends BasePopup {
   async openCart(): Promise<void> {
     await this.viewCartButton.click();
   }
+
+  async waitForPopup(): Promise<void> {
+    await this.page.locator('.cart_popup').waitFor({ state: 'visible', timeout: 5000 });
+  }
+
+  async goToCart(): Promise<void> {
+    await this.viewCartButton.click();
+  }
 }

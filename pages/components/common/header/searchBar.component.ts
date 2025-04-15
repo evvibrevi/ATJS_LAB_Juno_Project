@@ -22,4 +22,13 @@ export class SearchBar extends BaseComponent {
     await this.searchButton.click();
     await this.page.waitForURL(/search/);
   }
+
+foundItem(selector: string): Locator {
+  const cssSelector = selector.startsWith('.') ? selector : `.${selector}`;
+  return this.page.locator(cssSelector).first();
+}
+
+async clickFoundItem(selector: string): Promise<void> {
+  await this.foundItem(selector).click();
+}
 }

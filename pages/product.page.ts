@@ -33,4 +33,12 @@ export class ProductPage extends BasePage {
   async addProductToCart(): Promise<void> {
     await this.cartButton.click();
   }
+
+  get featuresTab(): Locator {
+    return this.page.locator('div.ptc-tab.ptc-active#ptc-features');
+  }
+  async verifyFeaturesTabIsVisible(timeout: number = 5000): Promise<void> {
+    await this.featuresTab.waitFor({ state: 'visible', timeout });
+  }
 }
+
