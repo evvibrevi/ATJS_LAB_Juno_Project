@@ -10,10 +10,11 @@ test.describe('Posts API Tests', () => {
     const response = await apiHelper.get<Post>('/posts/1');
 
     expect(response.status).toBe(200);
-    expect(response.data.id).toBe(1);
 
     const isValid = apiHelper.validateSchema(response.data, postSchema);
     expect(isValid).toBe(true);
+
+    expect(response.data.id).toBe(1);
   });
 
   test('GET /posts/99999 - Try to fetch non-existent post', async () => {
@@ -33,7 +34,10 @@ test.describe('Posts API Tests', () => {
     const response = await apiHelper.post<Post>('/posts', newPost);
 
     expect(response.status).toBe(201);
-    expect(response.data).toHaveProperty('id');
+
+    const isValid = apiHelper.validateSchema(response.data, postSchema);
+    expect(isValid).toBe(true);
+
     expect(response.data.title).toBe(newPost.title);
     expect(response.data.body).toBe(newPost.body);
     expect(response.data.userId).toBe(newPost.userId);
@@ -61,6 +65,10 @@ test.describe('Posts API Tests', () => {
     const response = await apiHelper.patch<Post>('/posts/1', partialUpdate);
 
     expect(response.status).toBe(200);
+
+    const isValid = apiHelper.validateSchema(response.data, postSchema);
+    expect(isValid).toBe(true);
+
     expect(response.data.title).toBe(partialUpdate.title);
   });
 

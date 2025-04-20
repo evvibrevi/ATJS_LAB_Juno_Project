@@ -24,7 +24,7 @@ export class ApiHelper {
     }
   }
 
-  async post<T>(endpoint: string, data: any): Promise<AxiosResponse<T>> {
+  async post<T>(endpoint: string, data: object): Promise<AxiosResponse<T>> {
     try {
       return await axios.post<T>(`${this.baseUrl}${endpoint}`, data);
     } catch (error: any) {
@@ -36,7 +36,7 @@ export class ApiHelper {
     }
   }
 
-  async put<T>(endpoint: string, data: any): Promise<AxiosResponse<T>> {
+  async put<T>(endpoint: string, data: object): Promise<AxiosResponse<T>> {
     try {
       return await axios.put<T>(`${this.baseUrl}${endpoint}`, data);
     } catch (error: any) {
@@ -48,7 +48,7 @@ export class ApiHelper {
     }
   }
 
-  async patch<T>(endpoint: string, data: any): Promise<AxiosResponse<T>> {
+  async patch<T>(endpoint: string, data: object): Promise<AxiosResponse<T>> {
     try {
       return await axios.patch<T>(`${this.baseUrl}${endpoint}`, data);
     } catch (error: any) {
@@ -72,7 +72,7 @@ export class ApiHelper {
     }
   }
 
-  validateSchema(data: any, schema: object): boolean {
+  validateSchema(data: object, schema: object): boolean {
     const validate = this.ajv.compile(schema);
     const valid = validate(data);
 
@@ -81,5 +81,22 @@ export class ApiHelper {
     }
 
     return valid;
+  }
+
+  validateArraySchema<T extends object>(data: T[], schema: object): boolean {
+    if (!Array.isArray(data)) {
+      console.error('Data is not an array');
+      return false;
+    }
+
+    for (let i = 0; i < data.length; i++) {
+      const valid = this.validateSchema(data[i], schema);
+      if (!valid) {
+        console.error(`Item at index ${i} failed validation`);
+        return false;
+      }
+    }
+
+    return true;
   }
 }

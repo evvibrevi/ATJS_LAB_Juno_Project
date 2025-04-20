@@ -11,9 +11,10 @@ test.describe('Users API Tests', () => {
 
     expect(response.status).toBe(200);
     expect(Array.isArray(response.data)).toBe(true);
-    expect(response.data.length).toBe(10);
 
-    const isValid = apiHelper.validateSchema(response.data[0], userSchema);
+    const isValid = apiHelper.validateArraySchema(response.data, userSchema);
     expect(isValid).toBe(true);
+
+    expect(response.data.length).toBe(10);
   });
 });

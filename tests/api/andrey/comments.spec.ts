@@ -13,11 +13,11 @@ test.describe('Comments API Tests', () => {
     expect(Array.isArray(response.data)).toBe(true);
     expect(response.data.length).toBeGreaterThan(0);
 
+    const isValid = apiHelper.validateArraySchema(response.data, commentSchema);
+    expect(isValid).toBe(true);
+
     response.data.forEach((comment) => {
       expect(comment.postId).toBe(1);
     });
-
-    const isValid = apiHelper.validateSchema(response.data[0], commentSchema);
-    expect(isValid).toBe(true);
   });
 });

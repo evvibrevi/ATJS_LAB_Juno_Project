@@ -13,11 +13,11 @@ test.describe('Albums API Tests', () => {
     expect(Array.isArray(response.data)).toBe(true);
     expect(response.data.length).toBeGreaterThan(0);
 
+    const isValid = apiHelper.validateArraySchema(response.data, photoSchema);
+    expect(isValid).toBe(true);
+
     response.data.forEach((photo) => {
       expect(photo.albumId).toBe(1);
     });
-
-    const isValid = apiHelper.validateSchema(response.data[0], photoSchema);
-    expect(isValid).toBe(true);
   });
 });

@@ -13,11 +13,11 @@ test.describe('Todos API Tests', () => {
     expect(Array.isArray(response.data)).toBe(true);
     expect(response.data.length).toBeGreaterThan(0);
 
+    const isValid = apiHelper.validateArraySchema(response.data, todoSchema);
+    expect(isValid).toBe(true);
+
     response.data.forEach((todo) => {
       expect(todo.completed).toBe(true);
     });
-
-    const isValid = apiHelper.validateSchema(response.data[0], todoSchema);
-    expect(isValid).toBe(true);
   });
 });
