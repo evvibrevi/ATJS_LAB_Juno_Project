@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { ApiHelper } from './helpers/apiHelper';
-import { todoSchema } from './schemas/jsonSchemas';
-import { Todo } from './types/apiTypes';
+import { ApiHelper } from '../../../helpers/apiHelper';
+import { todoSchema } from '../../../apiSchemas/jsonSchemas';
+import { Todo } from '../../../types/apiTypes';
 
 const apiHelper = new ApiHelper('https://jsonplaceholder.typicode.com');
 
