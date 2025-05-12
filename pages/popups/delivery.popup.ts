@@ -11,7 +11,7 @@ export class DeliveryPopup extends BasePopup {
   constructor(page: Page) {
     super(page);
     this.popupContainer = this.page.locator('#modal-we-deliver');
-    this.okButton = this.popupContainer.getByRole('button', { name: 'OK' });
+    this.okButton = this.popupContainer.getByRole('button', { name: /ok|shop now!/i });
   }
 
   async closeIfVisible(): Promise<void> {
