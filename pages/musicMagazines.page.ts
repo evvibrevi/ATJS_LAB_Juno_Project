@@ -140,29 +140,48 @@ export class MusicMagazinesPage extends BasePage {
 
     // Filter by "Show Out Of Stock" showOutOFStock.spec.ts
     async selectShowOutOfStock(): Promise<void> {
+        // Wait for the filter section to be visible
         await this.page.waitForSelector('.facet-items', { state: 'visible' });
 
-        const showOutOfStockCheckbox = this.page.locator(
-            '.facet-items .facet-item[title="Show Out Of Stock"]'
-        );
-        await showOutOfStockCheckbox.click();
+        // Locate and click the "Show Out Of Stock" checkbox
+        const showOutOfStockCheckbox = this.page.locator('.facet-items .facet-item', {
+            hasText: 'Show Out Of Stock',
+        }).locator('input[type="checkbox"]');
+
+        if (await showOutOfStockCheckbox.isVisible()) {
+            await showOutOfStockCheckbox.click();
+            console.log('Clicked "Show Out Of Stock" checkbox.');
+        }
+
+        // Wait for filtering to finish and products to load
         await this.page.waitForLoadState('networkidle');
         await this.page.waitForSelector('.product-list', { state: 'visible' });
 
+        // Check that "e-mail alert" buttons are visible, confirming out-of-stock items
         const outOfStockButtons = this.page.locator('button[title*="e-mail alert"]');
         const outOfStockCount = await outOfStockButtons.count();
+
         expect(outOfStockCount).toBeGreaterThan(0);
+        console.log(`Found ${outOfStockCount} out-of-stock items.`);
 
         for (let i = 0; i < outOfStockCount; i++) {
-            const isVisible = await outOfStockButtons.nth(i).isVisible();
-            expect(isVisible).toBeTruthy();
+            expect(await outOfStockButtons.nth(i).isVisible()).toBeTruthy();
         }
     }
 
     async verifyNoAddToCartButtons(): Promise<void> {
+        // Wait for product list to fully load
+        await this.page.waitForSelector('.product-list', { state: 'visible' });
+        await this.page.waitForLoadState('networkidle');
+
+        // Look for visible "Add to Cart" buttons
         const addToCartButtons = this.page.locator('button:has-text("Add to Cart")');
+
+        // Count visible ones
         const addToCartCount = await addToCartButtons.count();
         console.log(`Number of "Add to Cart" buttons found: ${addToCartCount}`);
+
+        // Assert that none are present (since we only show out-of-stock)
         expect(addToCartCount).toBe(0);
     }
 
@@ -206,7 +225,7 @@ export class MusicMagazinesPage extends BasePage {
     async filterByWord(): Promise<void> {
         const myFiltersHeader = this.page.locator('.facet-search.sb_widget .h-new', { hasText: 'My filters' });
         await expect(myFiltersHeader).toBeVisible();
-        
+
         const searchInput = this.page.locator('#query-within');
         await searchInput.fill('wire');
 
@@ -224,16 +243,16 @@ export class MusicMagazinesPage extends BasePage {
         let wireMatchCount = 0;
 
         for (let i = 0; i < totalCount; i++) {
-        const productHTML = await productHighlights.nth(i).innerHTML();
-        if (productHTML.toLowerCase().includes('wire')) {
-            wireMatchCount++;
-        }
+            const productHTML = await productHighlights.nth(i).innerHTML();
+            if (productHTML.toLowerCase().includes('wire')) {
+                wireMatchCount++;
+            }
         }
         expect(wireMatchCount).toBe(totalCount);
 
         console.log(`Total products: ${totalCount}`);
         console.log(`Products containing 'wire': ${wireMatchCount}`);
-}
+    }
 
     // Make sure subcategory is displayed subcatDisplay.spec.ts
     async verifySubcategoryDisplay(): Promise<void> {
@@ -245,15 +264,15 @@ export class MusicMagazinesPage extends BasePage {
         const heading = sidebar.locator('h5.h-new');
         await expect(heading).toHaveText('Equipment');
         console.log('Sidebar is visible and contains expected heading text');
-}
+    }
 
     // Check if the product is presand after adding to cart shoppingCard.spec.ts
     async addToCart(): Promise<void> {
-        
+
         const addToCartButton = this.page.locator('button[onclick*="addToCart(925242"]');
         await addToCartButton.click();
         await this.page.waitForLoadState('networkidle');
-    
+
     }
     async openCart(): Promise<void> {
         const viewCardButton = this.page.locator('a.btn.btn-lg.btn-success', { hasText: 'View cart' });
@@ -270,6 +289,6 @@ export class MusicMagazinesPage extends BasePage {
         const productLabel = this.page.locator('.cart-label a', { hasText: 'Ugly Things US' });
         await expect(productLabel).toBeVisible();
         console.log('Product is present in the cart');
-        }
-    
+    }
+
 }
