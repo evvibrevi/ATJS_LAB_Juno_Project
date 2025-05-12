@@ -15,7 +15,7 @@ test('should filter by "Reviewed" and verify reviews navigation', async ({ page 
     await homePage.open();
     await deliveryPopup.closeIfVisible();
     await cookiePopup.closeIfVisible();
-
+    await page.context().clearPermissions();
     await musicMagazinesPage.selectDjEquipmentCategory();
     await slipmatsPage.selectSubcategory();
 

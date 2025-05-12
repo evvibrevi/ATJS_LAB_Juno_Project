@@ -16,7 +16,7 @@ test('should filter by brand', async ({ page }) => {
   await homePage.open();
   await deliveryPopup.closeIfVisible();
   await cookiePopup.closeIfVisible();
-
+  await page.context().clearPermissions();
   await musicMagazinesPage.selectDjEquipmentCategory();
   await slipmatsPage.selectSubcategory();
   await slipmatsPage.filterByBrand();

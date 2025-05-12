@@ -13,7 +13,7 @@ test('should show only out-of-stock products when filter is applied', async ({ p
   await homePage.open();
   await deliveryPopup.closeIfVisible();
   await cookiePopup.closeIfVisible();
-
+  await page.context().clearPermissions();
   await musicMagazinesPage.selectDjEquipmentCategory();
   await musicMagazinesPage.selectMusicMagazineSubcategory();
 

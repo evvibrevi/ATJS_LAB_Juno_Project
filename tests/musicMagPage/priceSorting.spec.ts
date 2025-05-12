@@ -13,7 +13,7 @@ test('should sort products by price in ascending order', async ({ page }) => {
   await homePage.open();
   await deliveryPopup.closeIfVisible();
   await cookiePopup.closeIfVisible();
-
+  await page.context().clearPermissions();
   await musicMagazinesPage.selectDjEquipmentCategory();
   await musicMagazinesPage.selectMusicMagazineSubcategory();
   await musicMagazinesPage.sortByPriceLowToHigh();

@@ -14,6 +14,7 @@ test('should verify add to cart buttons in recommendation section', async ({ pag
   await homePage.open();
   await deliveryPopup.closeIfVisible();
   await cookiePopup.closeIfVisible();
+  await page.context().clearPermissions();
   await musicMagazinesPage.selectDjEquipmentCategory();
   await musicMagazinesPage.selectMusicMagazineSubcategory();
   await musicMagazinesPage.verifySubcategoryDisplay();

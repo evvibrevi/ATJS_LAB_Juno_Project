@@ -14,6 +14,7 @@ test('should check that every product in page has product image', async ({ page 
   await homePage.open();
   await deliveryPopup.closeIfVisible();
   await cookiePopup.closeIfVisible();
+  await page.context().clearPermissions();
 
   await musicMagazinesPage.selectDjEquipmentCategory();
   await musicMagazinesPage.selectMusicMagazineSubcategory();  
