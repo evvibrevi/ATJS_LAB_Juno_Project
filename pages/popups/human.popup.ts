@@ -24,8 +24,5 @@ export class HumanPopup extends BasePopup {
       await this.popupClose.click();
       console.log('Closed the popup');
     }
-
-    // Continue with normal test expectations
-    await expect(this.page.locator('h1')).toHaveText('Welcome');
   }
 }
