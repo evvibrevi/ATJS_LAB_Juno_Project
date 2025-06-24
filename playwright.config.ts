@@ -21,19 +21,19 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['html', { outputFolder: 'playwright-report' }], // html
-    [
-      '@reportportal/agent-js-playwright',
-      {
-        token:
-          'JunoTest_g7XAEQnpR4yesrtEXCSbfgS-sAK9cwscjiKvwcP7Q_yFxtATjhc8LcYWkTZqpRP2',
-        endpoint: 'https://reportportal.epam.com/api/v1',
-        project: 'ruslan_klimakov_personal',
-        launch: 'Playwright UI tests',
-        description: 'Juno test',
-        attributes: [{ key: 'team', value: 'QA' }],
-        debug: false,
-      },
-    ],
+    // [
+    //   '@reportportal/agent-js-playwright',
+    //   {
+    //     token:
+    //       process.env.REPORT_PORTAL_TOKEN,
+    //     endpoint: 'https://reportportal.epam.com/api/v1',
+    //     project: 'ruslan_klimakov_personal',
+    //     launch: 'Playwright UI tests',
+    //     description: 'Juno test',
+    //     attributes: [{ key: 'team', value: 'QA' }],
+    //     debug: false,
+    //   },
+    // ],
     ['list'],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
