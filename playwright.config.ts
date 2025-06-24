@@ -25,7 +25,7 @@ export default defineConfig({
       '@reportportal/agent-js-playwright',
       {
         token:
-          'JunoTest_g7XAEQnpR4yesrtEXCSbfgS-sAK9cwscjiKvwcP7Q_yFxtATjhc8LcYWkTZqpRP2',
+          process.env.REPORT_PORTAL_TOKEN,
         endpoint: 'https://reportportal.epam.com/api/v1',
         project: 'ruslan_klimakov_personal',
         launch: 'Playwright UI tests',
